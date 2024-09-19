@@ -1,0 +1,14 @@
+.start-page {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../../assets/img/star-wars-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &__button-container {
+    margin-bottom: 50px;
+  }
+}

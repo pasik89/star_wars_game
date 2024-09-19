@@ -1,0 +1,21 @@
+@import "../../../../assets/variables";
+
+:host {
+  font-family: 'custom-font', "Helvetica Neue", sans-serif;
+
+  &.btn {
+    background-color: $primary-yellow;
+    padding: $padding-sm $padding-md;
+    border-radius: $border-radius;
+
+    &.btn-large {
+      font-size: $font-size-lg;
+    }
+
+    &.btn-xxl {
+      font-size: $font-size-xxl;
+      padding: $padding-md $padding-xxl;
+      border-radius: $border-radius-xxl;
+    }
+  }
+}

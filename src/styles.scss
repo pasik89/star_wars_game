@@ -1,0 +1,28 @@
+@use '@angular/material' as mat;
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: 'custom-font', "Helvetica Neue", sans-serif;
+  font-size: 16px;
+}
+
+button {
+  border: 0;
+  padding: 0;
+  background: none repeat scroll 0 0 transparent;
+  border-spacing: 0;
+  line-height: 1.42rem;
+  list-style: none outside none;
+  margin: 0;
+  text-align: left;
+  text-decoration: none;
+  text-indent: 0;
+  cursor: pointer;
+}
+
+@font-face {
+  font-family: 'custom-font';
+  src: url('assets/font/SfDistantGalaxy-0l3d.ttf');
+}
