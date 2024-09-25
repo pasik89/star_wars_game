@@ -17,7 +17,7 @@
     "paths": {
       "@star_wars_game/playground": ["modules/playground/src/index.ts"],
       "@star_wars_game/start-page-lib": ["modules/start-page/src/index.ts"],
-      "@start-wars-game/shared/ui": ["modules/shared/src/index.ts"]
+      "@start-wars-game/shared": ["modules/shared/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,0 +1,124 @@
+<div class="fight-page" [formGroup]="fightForm">
+  @if (!showFight()) {
+    <div class="fight-page__content-container">
+      <div class="fight-page__select-container">
+        <mat-form-field>
+          <mat-label>{{ 'Choose figher' }}</mat-label>
+          <mat-select [formControlName]="'player1'">
+            @for(option of gamePlayers().results; track option) {
+              <mat-option [value]="option">{{ option.name }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>{{ 'Choose figher' }}</mat-label>
+          <mat-select [formControlName]="'player2'">
+            @for(option of gamePlayers().results; track option) {
+              <mat-option [value]="option">{{ option.name }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="fight-page__button-container">
+        <button class="btn btn-xxl" lib-ui-button [disabled]="!(playerOne() &&  playerTwo())" (click)="showFightView(true)">Fight</button>
+        <button class="btn btn-xxl" lib-ui-button (click)="backToSelectGame()">Back to select Game</button>
+      </div>
+    </div>
+  } @else {
+    <div class="fight-page__fight-container">
+      @switch (gameType()) {
+        @case (gamePlayersType.PEOPLE) {
+          @if ((playerOne() &&  playerTwo()) && (convertToNumber(playerOne().result.properties.mass) > convertToNumber(playerTwo().result.properties.mass))) {
+            <div class="fight-page__player-interface-container">
+              <div class="fight-page__player-one">
+                <lib-player-interface [player]="playerOne" [gameType]="gameType" [isInverted]="false"></lib-player-interface>
+              </div>
+              <div class="fight-page__infinity-symbol">∞</div>
+              <div class="fight-page__player-two">
+                <lib-player-interface [player]="playerTwo" [gameType]="gameType" [isInverted]="true"></lib-player-interface>
+              </div>
+            </div>
+            <div class="fight-page__winner-container">
+              <p>The winner is {{ playerOne().result.properties.name }}</p>
+            </div>
+          } @else if ((playerOne() &&  playerTwo()) && (convertToNumber(playerOne().result.properties.mass) < convertToNumber(playerTwo().result.properties.mass))) {
+            <div class="fight-page__player-interface-container">
+              <div class="fight-page__player-one">
+                <lib-player-interface [player]="playerOne" [gameType]="gameType" [isInverted]="false"></lib-player-interface>
+              </div>
+              <div class="fight-page__infinity-symbol">∞</div>
+              <div class="fight-page__player-two">
+                <lib-player-interface [player]="playerTwo" [gameType]="gameType" [isInverted]="true"></lib-player-interface>
+              </div>
+            </div>
+            <div class="fight-page__winner-container">
+              <p>The winner is {{ playerTwo().result.properties.name }}</p>
+            </div>
+          } @else if ((playerOne() &&  playerTwo()) && (convertToNumber(playerOne().result.properties.mass) === convertToNumber(playerTwo().result.properties.mass))) {
+            <div class="fight-page__player-interface-container">
+              <div class="fight-page__player-one">
+                <lib-player-interface [player]="playerOne" [gameType]="gameType" [isInverted]="false"></lib-player-interface>
+              </div>
+              <div class="fight-page__infinity-symbol">∞</div>
+              <div class="fight-page__player-two">
+                <lib-player-interface [player]="playerTwo" [gameType]="gameType" [isInverted]="true"></lib-player-interface>
+              </div>
+            </div>
+            <div class="fight-page__winner-container">
+              <p>DRAW</p>
+            </div>
+          }
+        }
+        @case (gamePlayersType.STARSHIPS) {
+          @if ((playerOne() &&  playerTwo()) && (convertToNumber(playerOne().result.properties.crew) > convertToNumber(playerTwo().result.properties.crew))) {
+            <div class="fight-page__player-interface-container">
+              <div class="fight-page__player-one">
+                <lib-player-interface [player]="playerOne" [gameType]="gameType" [isInverted]="false"></lib-player-interface>
+              </div>
+              <div class="fight-page__infinity-symbol">∞</div>
+              <div class="fight-page__player-two">
+                <lib-player-interface [player]="playerTwo" [gameType]="gameType" [isInverted]="true"></lib-player-interface>
+              </div>
+            </div>
+            <div class="fight-page__winner-container">
+              <p>The winner is {{ playerOne().result.properties.name }}</p>
+            </div>
+          } @else if ((playerOne() &&  playerTwo()) && (convertToNumber(playerOne().result.properties.crew) < convertToNumber(playerTwo().result.properties.crew))) {
+            <div class="fight-page__player-interface-container">
+              <div class="fight-page__player-one">
+                <lib-player-interface [player]="playerOne" [gameType]="gameType" [isInverted]="false"></lib-player-interface>
+              </div>
+              <div class="fight-page__infinity-symbol">∞</div>
+              <div class="fight-page__player-two">
+                <lib-player-interface [player]="playerTwo" [gameType]="gameType" [isInverted]="true"></lib-player-interface>
+              </div>
+            </div>
+            <div class="fight-page__winner-container">
+              <p>The winner is {{ playerTwo().result.properties.name }}</p>
+            </div>
+          } @else if ((playerOne() &&  playerTwo()) && (convertToNumber(playerOne().result.properties.crew) === convertToNumber(playerTwo().result.properties.crew))) {
+            <div class="fight-page__player-interface-container">
+              <div class="fight-page__player-one">
+                <lib-player-interface [player]="playerOne" [gameType]="gameType" [isInverted]="false"></lib-player-interface>
+              </div>
+              <div class="fight-page__infinity-symbol">∞</div>
+              <div class="fight-page__player-two">
+                <lib-player-interface [player]="playerTwo" [gameType]="gameType" [isInverted]="true"></lib-player-interface>
+              </div>
+            </div>
+            <div class="fight-page__winner-container">
+              <p>DRAW</p>
+            </div>
+          }
+        }
+        @default {
+          <p>WAITING</p>
+        }
+      }
+      <div class="fight-page__button-container">
+        <button class="btn btn-xxl" lib-ui-button (click)="showFightView(false)">Play again</button>
+      </div>
+    </div>
+  }
+</div>

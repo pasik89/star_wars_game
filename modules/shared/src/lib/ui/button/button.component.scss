@@ -10,12 +10,16 @@
 
     &.btn-large {
       font-size: $font-size-lg;
+      line-height: $font-size-lg;
+      text-align: center;
     }
 
     &.btn-xxl {
       font-size: $font-size-xxl;
+      line-height: $font-size-xxl;
       padding: $padding-md $padding-xxl;
       border-radius: $border-radius-xxl;
+      text-align: center;
     }
   }
 }

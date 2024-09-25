@@ -3,6 +3,7 @@ import { Route } from '@angular/router';
 export const appRoutes: Route[] = [
   {
     path: '',
+    pathMatch: 'full',
     loadChildren: () =>
       import('@star_wars_game/start-page-lib').then((r) => r.startPageRoutes),
   },

@@ -1,0 +1,27 @@
+@import "../../../../shared/assets/variables";
+
+.playground-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../../assets/img/star-wars-playground-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  &__button-container {
+    margin-bottom: 50px;
+  }
+
+  &__content-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__content {
+    color: $primary-white;
+  }
+}

@@ -1,35 +1,32 @@
 import {
   ChangeDetectionStrategy,
-  Component, computed,
+  Component,
   inject,
-  OnInit,
   signal,
   Signal
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GameService, SelectComponent } from '@start-wars-game/shared/ui';
+import { Router } from '@angular/router';
+import { ButtonComponent, GameTypesEnum } from '@start-wars-game/shared';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { FormControl, ReactiveFormsModule, UntypedFormControl } from '@angular/forms';
 
 @Component({
   selector: 'lib-playground',
   standalone: true,
-  imports: [CommonModule, MatSelectModule, MatFormFieldModule, SelectComponent],
+  imports: [CommonModule, MatSelectModule, MatFormFieldModule, ReactiveFormsModule, ButtonComponent],
   templateUrl: './playground.component.html',
   styleUrl: './playground.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PlaygroundComponent implements OnInit {
-  private _gameService: GameService = inject(GameService);
-  options: Signal<any> = signal([]);
-  computedOptions: Signal<any> = computed(() => this.options().results);
+export class PlaygroundComponent {
+  private _router: Router = inject(Router);
 
-  public ngOnInit() {
-    this.options = toSignal(this._gameService.get(), {
-      injector: this._gameService,
-      manualCleanup: true,
-      initialValue: [],
-    });
+  public selectOptions: Signal<any> = signal([GameTypesEnum.PEOPLE, GameTypesEnum.STARSHIPS]);
+  public control: UntypedFormControl = new FormControl('aaa');
+
+  public navigateToFightPage() {
+    this._router.navigate(['playground', 'fight-page', this.control.value]);
   }
 }

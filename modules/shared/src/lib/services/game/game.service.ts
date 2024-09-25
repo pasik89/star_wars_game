@@ -10,4 +10,12 @@ export class GameService {
   get() {
     return this._http.get('https://www.swapi.tech/api/people');
   }
+
+  getGamePlayers(player: string | null) {
+    return this._http.get(`https://www.swapi.tech/api/${player}`);
+  }
+
+  getPlayer(url: string | null) {
+    return this._http.get(`${url}`);
+  }
 }

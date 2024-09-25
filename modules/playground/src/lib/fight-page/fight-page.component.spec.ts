@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { SelectComponent } from './select.component';
+import { FightPageComponent } from './fight-page.component';
 
-describe('SelectComponent', () => {
-  let component: SelectComponent;
-  let fixture: ComponentFixture<SelectComponent>;
+describe('PlaygroundComponent', () => {
+  let component: FightPageComponent;
+  let fixture: ComponentFixture<FightPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SelectComponent],
+      imports: [FightPageComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SelectComponent);
+    fixture = TestBed.createComponent(FightPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

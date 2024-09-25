@@ -26,3 +26,20 @@ button {
   font-family: 'custom-font';
   src: url('assets/font/SfDistantGalaxy-0l3d.ttf');
 }
+
+.mat-mdc-floating-label {
+  mat-label {
+    font-family: 'Roboto', "Helvetica Neue", sans-serif;
+  }
+}
+.mat-mdc-select-value-text {
+  font-family: 'custom-font', "Helvetica Neue", sans-serif;
+}
+
+.mat-option {
+  font-family: 'custom-font', "Helvetica Neue", sans-serif;
+}
+
+.mat-mdc-option .mdc-list-item__primary-text {
+  font-family: 'custom-font', "Helvetica Neue", sans-serif !important;
+}

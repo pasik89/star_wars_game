@@ -1,8 +1,0 @@
-<mat-form-field>
-  <mat-label>Favorite food</mat-label>
-  <mat-select>
-    @for(option of options(); track option) {
-      <mat-option [value]="option.uid">{{ option.name }}</mat-option>
-    }
-  </mat-select>
-</mat-form-field>

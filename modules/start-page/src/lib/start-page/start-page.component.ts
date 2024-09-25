@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonComponent } from '@start-wars-game/shared/ui';
+import { ButtonComponent } from '@start-wars-game/shared';
 import { Router } from '@angular/router';
 
 @Component({

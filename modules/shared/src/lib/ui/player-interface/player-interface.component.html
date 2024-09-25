@@ -1,0 +1,11 @@
+<div class="player-interface">
+  <div class="player-interface__name-container">
+    @if (gameType() === gamePlayersType.PEOPLE) {
+      <div class="player-interface__health-bar" [ngClass]="{'player-interface__health-bar-inverted': isInverted }">{{ convertToNumber(player().result.properties.mass) }}</div>
+      <p>{{ player().result.properties.name }}</p>
+    } @else if (gameType() === gamePlayersType.STARSHIPS) {
+      <div class="player-interface__health-bar">{{ convertToNumber(player().result.properties.crew) }}</div>
+      <p>{{ player().result.properties.name }}</p>
+    }
+  </div>
+</div>
